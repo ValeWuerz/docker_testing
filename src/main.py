@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 import redis
 
-r = redis.Redis(host="redis123", port=6379)
+r = redis.Redis(host="redis", port=6379)
 app = FastAPI()
 
 # import debugpy
@@ -18,7 +18,7 @@ def read_root():
 
 
 @app.get("/hits")
-def read_root():
+def read_root2():
     r.set("foo", "bar")
     r.incr("hits")
     return {"Number of hits:": r.get("hits"), "foo": r.get("foo")}
